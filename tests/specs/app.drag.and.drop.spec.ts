@@ -8,8 +8,19 @@ describe('WebdriverIO and Appium, when using drag and drop', () => {
         await DragScreen.waitForIsShown(true);
     });
 
+    afterEach(async function () {
+        if (driver) {
+            await driver.executeScript('devicefarm: setSessionStatus', [
+                {
+                    status: this?.currentTest?.state, //passed or failed
+                },
+            ]);
+        }
+    });
+
     it('should be able to solve the puzzle by dragging the pieces into the puzzle', async () => {
         // Drag each element to the position
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Solve Puzzle' }]);
         await DragScreen.dragElementTo(await DragScreen.dragL1, await DragScreen.dropL1);
         await DragScreen.dragElementTo(await DragScreen.dragC1, await DragScreen.dropC1);
         await DragScreen.dragElementTo(await DragScreen.dragR1, await DragScreen.dropR1);

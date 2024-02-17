@@ -10,10 +10,21 @@ describe('WebdriverIO and Appium, when using swiping', () => {
         await SwipeScreen.waitForIsShown(true);
     });
 
+    afterEach(async function () {
+        if (driver) {
+            await driver.executeScript('devicefarm: setSessionStatus', [
+                {
+                    status: this?.currentTest?.state, //passed or failed
+                },
+            ]);
+        }
+    });
+
     it('should be able to swipe horizontal by swiping the carousel from left to right', async () => {
         /**
          * To understand what happens in `isCardActive()` please check the method
          */
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Swipe Horizontal' }])
         await expect(await Carousel.isCardActive(await Carousel.openSourceCard)).toBeTruthy();
 
         /**
@@ -47,6 +58,7 @@ describe('WebdriverIO and Appium, when using swiping', () => {
 
     it('should be able to swipe vertical by finding the surprise', async ()=>{
         // Swipe vertical and try to find the element. You can only swipe a max of 5 times
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Swipe Vertical' }])
         await Gestures.checkIfDisplayedWithSwipe({
             scrollContainer: await SwipeScreen.screen,
             searchableElement: await SwipeScreen.logo,

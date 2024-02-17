@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import Gestures from '../helpers/Gestures.js';
 import TabBar from '../screenobjects/components/TabBar.js';
 import FormScreen from '../screenobjects/FormsScreen.js';
@@ -10,8 +12,18 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
         await TabBar.openForms();
         await FormScreen.waitForIsShown(true);
     });
+    afterEach(async function () {
+        if (driver) {
+            await driver.executeScript('devicefarm: setSessionStatus', [
+                {
+                    status: this?.currentTest?.state, //passed or failed
+                },
+            ]);
+        }
+    });
 
     it('should be able type in the input and validate the text', async () => {
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Submit Form' }]);
         const text = 'Hello, this is a demo app';
         await FormScreen.input.setValue(text);
         await expect(FormScreen.inputTextResult).toHaveTextContaining(text);
@@ -39,6 +51,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
     });
 
     it('should be able turn on and off the switch', async () => {
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Switch Test' }]);
         await expect(await FormScreen.isSwitchActive()).toEqual(false);
 
         await FormScreen.tapOnSwitch();
@@ -49,6 +62,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
     });
 
     it('should be able select a value from the select element', async () => {
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Select Item' }]);
         const valueOne = 'This app is awesome';
         const valueTwo = 'webdriver.io is awesome';
         const valueThree = 'Appium is awesome';
@@ -67,6 +81,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
     });
 
     it('should be able to open the alert and close it with all 3 buttons', async () => {
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'open the alert and close it with all 3 buttons' }]);
         await Gestures.checkIfDisplayedWithSwipe({
             scrollContainer: await FormScreen.screen,
             searchableElement: await FormScreen.activeButton,
@@ -98,6 +113,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
     it('should be able to determine that the inactive button is inactive', async () => {
         // Depending on the size of the screen we might need to scroll. This methods determines if it's visible,
         // if not, it will automatically scroll to find it. This will be done two times.
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Inactive button' }]);
         await Gestures.checkIfDisplayedWithSwipe({
             scrollContainer:await FormScreen.screen,
             searchableElement:await FormScreen.inActiveButton,
