@@ -12,7 +12,7 @@ describe('WebdriverIO and Appium, when using drag and drop', () => {
         if (driver) {
             await driver.executeScript('devicefarm: setSessionStatus', [
                 {
-                    status: this?.currentTest?.state, //passed or failed
+                    status: this.currentTest?.state, //passed or failed
                 },
             ]);
         }

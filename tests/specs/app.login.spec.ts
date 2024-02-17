@@ -2,8 +2,10 @@ import TabBar from '../screenobjects/components/TabBar.js';
 import LoginScreen from '../screenobjects/LoginScreen.js';
 import NativeAlert from '../screenobjects/components/NativeAlert.js';
 
-describe('WebdriverIO and Appium, when interacting with a login form,', () => {
+describe('WebdriverIO and Appium, when interacting with a login form,', async () => {
+
     beforeEach(async () => {
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Login Test' }])
         await TabBar.waitForTabBarShown();
         await TabBar.openLogin();
         await LoginScreen.waitForIsShown(true);
@@ -13,14 +15,13 @@ describe('WebdriverIO and Appium, when interacting with a login form,', () => {
         if (driver) {
             await driver.executeScript('devicefarm: setSessionStatus', [
                 {
-                    status: this?.currentTest?.state, //passed or failed
+                    status: this.currentTest?.state, //passed or failed
                 },
             ]);
         }
     });
 
     it('should be able login successfully', async () => {
-        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Login Test' }])
         // Always make sure you are on the right tab
         await LoginScreen.tapOnLoginContainerButton();
         // Submit the data
@@ -35,7 +36,7 @@ describe('WebdriverIO and Appium, when interacting with a login form,', () => {
     });
 
     it('should be able sign up successfully', async () => {
-        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Sign Up Test' }])
+        //await driver.executeScript('devicefarm: setSessionName', [{ name: 'Sign Up Test' }])
         // Always make sure you are on the right tab
         await LoginScreen.tapOnSignUpContainerButton();
         // Submit the data

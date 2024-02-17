@@ -25,8 +25,8 @@ export const config: WebdriverIO.Config = {
             platformName: 'Android',
             maxInstances: 3,
             'df:options': {
-                record_video: false,
-                screenshot_on_failure: false,
+                record_video: true,
+                screenshot_on_failure: true,
                 build: new Date().toISOString(),
             },
             'appium:automationName': 'UiAutomator2',

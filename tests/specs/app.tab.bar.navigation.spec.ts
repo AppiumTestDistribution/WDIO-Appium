@@ -15,7 +15,7 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
         if (driver) {
             await driver.executeScript('devicefarm: setSessionStatus', [
                 {
-                    status: this?.currentTest?.state, //passed or failed
+                    status: this.currentTest?.state, //passed or failed
                 },
             ]);
         }
@@ -40,13 +40,13 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
     });
 
     it('should be able to open the swipe screen', async () => {
-        await driver.executeAsync('devicefarm: setSessionName', [{ name: 'Swipe Test' }])
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Swipe Test' }])
         await TabBar.openSwipe();
         await SwipeScreen.waitForIsShown(true);
     });
 
     it('should be able to open the drag and drop screen', async () => {
-        await driver.executeAsync('devicefarm: setSessionName', [{ name: 'Drag and Drop Test' }])
+        await driver.executeScript('devicefarm: setSessionName', [{ name: 'Drag and Drop Test' }])
         await TabBar.openDrag();
         await DragScreen.waitForIsShown(true);
     });
