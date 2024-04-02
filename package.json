@@ -58,6 +58,10 @@
         "appium-xcuitest-driver": "6.0.1",
         "eslint-plugin-wdio": "^8.24.12",
         "ts-node": "^10.9.2",
-        "typescript": "^5.3.3"
+        "typescript": "^5.3.3",
+        "wdio-devicefarm-service": "0.0.0"
+    },
+    "dependencies": {
+        "wdio-timeline-reporter": "^5.1.4"
     }
 }

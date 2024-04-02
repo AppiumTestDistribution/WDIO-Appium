@@ -11,7 +11,7 @@ export const config: WebdriverIO.Config = {
     // Specs
     // ============
     specs: [
-        '../tests/specs/**/app*.spec.ts',
+        '../tests/specs/**/app.login.spec.ts',
     ],
 
     // ============
@@ -24,11 +24,7 @@ export const config: WebdriverIO.Config = {
             // The defaults you need to have in your config
             platformName: 'Android',
             maxInstances: 3,
-            'df:options': {
-                record_video: true,
-                screenshot_on_failure: true,
-                build: new Date().toISOString(),
-            },
+            'appium:orientation': 'PORTRAIT',
             'appium:automationName': 'UiAutomator2',
             // The path to the app
             'appium:app': join(

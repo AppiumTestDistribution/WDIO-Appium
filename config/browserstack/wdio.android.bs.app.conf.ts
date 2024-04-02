@@ -6,19 +6,19 @@ export const config: WebdriverIO.Config = {
     // Specs
     // ============
     specs: [
-        '../tests/specs/**/app*.spec.js',
+        '/Users/saikrishna/Downloads/git/WDIO-Appium/tests/specs/app.*.spec.ts',
     ],
     exclude: [
         // Exclude this one because the test can only be executed on emulators/simulators
-        '../tests/specs/**/app.biometric.login.spec.js',
+        //'../tests/specs/**/app.biometric.login.spec.ts',
     ],
 
     // =============================
     // Browserstack specific config
     // =============================
     // User configuration
-    user: process.env.BROWSERSTACK_USER || 'BROWSERSTACK_USER',
-    key: process.env.BROWSERSTACK_ACCESS_KEY || 'BROWSERSTACK_ACCESS_KEY',
+    user: process.env.BROWSERSTACK_USER || 'atddevs_shCVBn',
+    key: process.env.BROWSERSTACK_ACCESS_KEY || 'mjzX7BSrFPDFqR48hqya',
     // Use browserstack service
     services: ['browserstack'],
 
@@ -30,15 +30,13 @@ export const config: WebdriverIO.Config = {
     capabilities: [
         {
             // Set URL of the application under test
-            'appium:app': process.env.BROWSERSTACK_APP_ID || 'BROWSERSTACK_APP_ID',
+            'appium:app': process.env.BROWSERSTACK_APP_ID || 'bs://c23623f0addff69f49bcd982fbe0fd9aecec44a9',
 
             'bstack:options': {
                 // Set your BrowserStack config
-                debug: true,
-
-                // Specify device and os_version for testing
-                device: 'Google Pixel 3',
-                os_version: '9.0',
+                    deviceName: 'Samsung Galaxy S22 Ultra',
+                    platformVersion: '12.0',
+                    platformName: 'android',
 
                 // Set other BrowserStack capabilities
                 projectName: 'wdio-test-project',
@@ -46,5 +44,5 @@ export const config: WebdriverIO.Config = {
                 sessionName: 'wdio-test'
             }
         },
-    ] as WebdriverIO.Capabilities[]
+    ] as any
 };

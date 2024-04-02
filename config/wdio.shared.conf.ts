@@ -1,5 +1,8 @@
+// @ts-ignore
+
 import type { Options } from '@wdio/types';
 
+// @ts-ignore
 /**
  * All not needed configurations, for this boilerplate, are removed.
  * If you want to know which configuration options you have then you can
@@ -46,7 +49,7 @@ export const config: Options.Testrunner = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'debug',
-    port: 31337,
+    port: 4723,
     hostname: 'localhost',
     path: '/wd/hub/',
     // Set specific log levels per logger
