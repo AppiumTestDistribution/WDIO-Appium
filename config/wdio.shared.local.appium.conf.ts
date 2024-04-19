@@ -3,14 +3,7 @@ import { config as baseConfig } from './wdio.shared.conf.js';
 // @ts-ignore
 export const config: WebdriverIO.Config = {
     ...baseConfig,
-
-    //
-    // ======
-    // Appium
-    // ======
-    //
     services: [
-       ['/Users/saikrishna/Downloads/git/wdio-devicefarm-service/build/index.js'],
         // [
         //     'appium',
         //     {

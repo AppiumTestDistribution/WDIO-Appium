@@ -49,8 +49,8 @@ export const config: Options.Testrunner = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'debug',
-    port: 4723,
-    hostname: 'localhost',
+    port: 31337,
+    hostname: '127.0.0.1',
     path: '/wd/hub/',
     // Set specific log levels per logger
     // loggers:

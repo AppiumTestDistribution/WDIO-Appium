@@ -11,7 +11,7 @@ export const config: WebdriverIO.Config = {
     // Specs
     // ============
     specs: [
-        '../tests/specs/**/app.login.spec.ts',
+        '../tests/specs/**/app.drag.and.drop.spec.ts',
     ],
 
     // ============
@@ -34,6 +34,12 @@ export const config: WebdriverIO.Config = {
                 // NOTE: Change this name according to the app version you downloaded
                 'android.wdio.native.app.v1.0.8.apk',
             ),
+            'df:options': {
+                recordVideo: true,
+                screenshotOnFailure: true,
+                build: new Date().toISOString(),
+                saveDeviceLogs: true,
+            },
             'appium:appWaitActivity': 'com.wdiodemoapp.MainActivity',
             'appium:newCommandTimeout': 240,
         },
